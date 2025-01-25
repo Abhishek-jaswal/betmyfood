@@ -201,3 +201,28 @@ passBtn[0].addEventListener("click", function () {
 passBtn[1].addEventListener("click", function () {
   switchPlayerTo(1);
 });
+
+
+
+// Date and Time
+function showDateTime() {
+  const currentDate = new Date();
+
+  // Format the date 
+  const formattedDate = currentDate.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  // Format the time
+  const formattedTime = currentDate.toLocaleTimeString("en-US");
+  const dateTime = `${formattedDate} - ${formattedTime}`;
+  document.getElementById("dateTimeDisplay").textContent = dateTime;
+}
+
+// Call the function initially
+setInterval(showDateTime, 1000);
+
+

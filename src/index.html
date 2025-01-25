@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>betMyFood</title>
-    <script defer type="module" src="./js/main.js"></script>
+  
 </head>
 <body>
     <div class="container-fluid" id="welcomepage">
@@ -14,9 +14,7 @@
         <div class="d-flex justify-content-center">
             <button class="btn btn-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Start the Game</button>
         </div>
-
     </div>
-   
 </div>
 
     <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -43,15 +41,16 @@
 
                     <div id="step2">
                         <p id="step2Text"></p>
-                        <select class="form-select" id="betRecipe" aria-label="Default select example">
+                        <select class="form-select" id="betRecipe" aria-label="Default select example" onchange="updateFoodImage()">
                             <option selected>Select Your Option</option>
-                            <option value="Burger">Veggie Burger 🍔</option>
-                            <option value="Sandwich">Cheese Sandwich 🥪</option>
-                            <option value="TMK Pizza">TMK Pizza 🍕</option>
-                            <option value="Cafe Bill">Cafe Bill 💵</option>
-                            <option value="Sing a song">Sing a song 🎶</option>
-                            <option value="Dance">Dance</option>
-                          </select>
+                            <option value="Burger" data-image="images/burger.png">Veggie Burger 🍔</option>
+                            <option value="Sandwich" data-image="images/sandwich.png">Cheese Sandwich 🥪</option>
+                            <option value="TMK Pizza" data-image="images/pizza.png">TMK Pizza 🍕</option>
+                            <option value="Cafe Bill" data-image="images/cafe_bill.png">Cafe Bill 💵</option>
+                            <option value="Sing a song" data-image="images/sing_song.png">Sing a song 🎶</option>
+                            <option value="Dance" data-image="images/dance.png">Dance</option>
+                        </select>
+                          
                           <button class="btn btn-danger mx-auto" id="submitBtn" type="button">Next</button>
                     </div>
 
@@ -99,8 +98,10 @@
                         <img class="logo" src="./images/logo.png" class="" height="100" alt="">
                         <h1 class="fw-bold">bet FoR</h1>
                         <h1 class="fw-bold display-1" id="betReicpetext"></h1>
-                        <img src="./images/sandwich.png" class="betImage" height="300" alt="">
+                        <center><img src="" class="betImage" id="selectedFoodImage" height="300" alt="Selected Food" style="display: none;">
+                        </center> <p id="dateTimeDisplay"></p>
                     </div>
+                  
                 </div>
                 <div class="col-12 display-3 col-sm-3 h3 text-center d-flex justify-content-center align-items-center">
                     <div>
@@ -141,9 +142,27 @@
                  <a href="https://betmyfood.netlify.app/" class="btn btn-yellow fw-bold btn-small">Play Again </a>
 
         </div>
+      
       </div>
    
       
-   
+      <div id="boxes"></div>
 </body>
+<script>
+    function updateFoodImage() {
+  const betRecipe = document.getElementById("betRecipe");
+  const selectedFoodImage = document.getElementById("selectedFoodImage");
+
+  const selectedOption = betRecipe.options[betRecipe.selectedIndex];
+  const foodImagePath = selectedOption.getAttribute("data-image");
+
+  if (foodImagePath) {
+    selectedFoodImage.src = foodImagePath;
+    selectedFoodImage.style.display = "block";
+  } else {
+    selectedFoodImage.style.display = "none";
+  }
+}
+</script>
+<script defer type="module" src="./js/main.js"></script>
 </html>
