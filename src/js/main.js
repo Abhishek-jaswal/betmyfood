@@ -72,11 +72,26 @@ const finalStep = () => {
   document.getElementById("betReicpetext").textContent = betRecipe.value;
 };
 
+function updateFoodImage() {
+  const betRecipe = document.getElementById("betRecipe");
+  const selectedFoodImage = document.getElementById("selectedFoodImage");
+
+  const selectedOption = betRecipe.options[betRecipe.selectedIndex];
+  const foodImagePath = selectedOption.getAttribute("data-image");
+
+  if (foodImagePath) {
+    selectedFoodImage.src = foodImagePath;
+    selectedFoodImage.style.display = "block";
+  } else {
+    selectedFoodImage.style.display = "none";
+  }
+}
 const beginGame = () => {
   welcomepage.style.display = "none";
   gameStep.style.display = "block";
   player1Name.textContent = p1Name;
   player2Name.textContent = p2Name;
+  updateFoodImage();
 };
 
 const checkWinner = () => {

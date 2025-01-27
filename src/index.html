@@ -149,20 +149,7 @@
       <div id="boxes"></div>
 </body>
 <script>
-    function updateFoodImage() {
-  const betRecipe = document.getElementById("betRecipe");
-  const selectedFoodImage = document.getElementById("selectedFoodImage");
-
-  const selectedOption = betRecipe.options[betRecipe.selectedIndex];
-  const foodImagePath = selectedOption.getAttribute("data-image");
-
-  if (foodImagePath) {
-    selectedFoodImage.src = foodImagePath;
-    selectedFoodImage.style.display = "block";
-  } else {
-    selectedFoodImage.style.display = "none";
-  }
-}
+    
 </script>
 <script defer type="module" src="./js/main.js"></script>
 </html>
